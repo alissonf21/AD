@@ -1,0 +1,40 @@
+#include <LiquidCrystal.h>
+
+
+/*********************************************************
+   Definitions.
+*********************************************************/
+
+float analogPin = A1;
+float Val[10];
+float soma = 0, media = 0, x = 0;
+void setup()
+{
+  /* Configures and initialises LED pin */
+
+
+  Serial.begin(9600);
+
+ 
+
+}
+
+void loop()
+{
+  
+  for (int i = 0; i<10; i++) 
+  {
+    Val[i] = analogRead(analogPin);
+    delay(100);
+  }
+  for(int i=0; i<10; i++)
+  {
+    soma = soma + Val[i];
+  }
+  media = soma/10;
+  x = ((5*media)/1023);
+
+  Serial.println(x);
+  soma = 0;
+  media=0;
+ }
